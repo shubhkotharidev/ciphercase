@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cipher Case — Close the Case</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="scanline-band"></div>
+
+<div class="topbar">
+  <div class="brand">CIPHER <span>CASE</span></div>
+  <div style="display:flex; align-items:center; gap:14px;">
+    <span class="user-email" id="userEmail"></span>
+    <button class="logout-btn" id="logoutBtn">LOG OUT</button>
+  </div>
+</div>
+
+<div class="wrap" style="align-items:flex-start; padding-top:40px;">
+  <div class="file file-wide" id="loadingPanel">
+    <div class="status show">Loading your case file…</div>
+  </div>
+
+  <!-- Shown once the user has already submitted -->
+  <div class="file file-wide" id="closedPanel" style="display:none;">
+    <div class="closed-stamp">CASE CLOSED</div>
+    <div class="section-sub">Your answer has already been filed. Only one submission is allowed per agent.</div>
+    <div class="readonly-block">
+      <div><b>Killer named:</b> <span id="closedSuspect"></span></div>
+      <hr class="divider" style="margin:12px 0;" />
+      <div><b>Reasoning:</b><br /><span id="closedReasoning"></span></div>
+      <hr class="divider" style="margin:12px 0;" />
+      <div><b>Experience rating:</b> <span id="closedRating"></span></div>
+    </div>
+  </div>
+
+  <!-- Main form -->
+  <form class="file file-wide" id="caseForm" style="display:none;">
+    <h2 class="section-title">Suspect Lineup</h2>
+    <div class="section-sub">Who is the killer? Select one suspect.</div>
+    <div class="lineup" id="lineup"></div>
+
+    <hr class="divider" />
+
+    <h2 class="section-title">Your Reasoning</h2>
+    <div class="section-sub">Why do you believe this is the killer? Reference the clues you uncovered.</div>
+    <div class="field">
+      <textarea id="reasoning" rows="6" maxlength="2000" placeholder="Lay out your case…" required></textarea>
+    </div>
+
+    <hr class="divider" />
+
+    <h2 class="section-title">Rate the Experience</h2>
+    <div class="section-sub">How was Cipher Case overall?</div>
+    <div class="stars" id="stars">
+      <span class="star" data-value="1">★</span>
+      <span class="star" data-value="2">★</span>
+      <span class="star" data-value="3">★</span>
+      <span class="star" data-value="4">★</span>
+      <span class="star" data-value="5">★</span>
+    </div>
+    <div class="rating-label" id="ratingLabel">Tap a star to rate</div>
+
+    <button class="primary" id="submitBtn" type="submit" style="margin-top:22px;">CLOSE THE CASE</button>
+    <div class="status" id="formStatus"></div>
+  </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="supabase-client.js"></script>
+<script src="case.js"></script>
+</body>
+</html>

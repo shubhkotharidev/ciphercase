@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cipher Case — Agent Access</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="scanline-band"></div>
+
+<div class="wrap">
+  <div style="width:100%; max-width:440px;">
+    <div class="masthead">
+      <div class="eyebrow">CYSCOM × FYI CHENNAI — 24HR CTF</div>
+      <h1>CIPHER <span>CASE</span></h1>
+      <div class="tagline">Access is restricted to registered agents only.</div>
+    </div>
+
+    <div class="file">
+      <div class="file-tabs">
+        <button class="tab-btn active" id="tabLoginBtn" type="button">LOG IN</button>
+        <button class="tab-btn" id="tabSignupBtn" type="button">NEW AGENT</button>
+      </div>
+
+      <!-- LOGIN FORM -->
+      <form id="loginForm">
+        <div class="field">
+          <label for="loginEmail">Email Address</label>
+          <input id="loginEmail" type="email" placeholder="you@example.com" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label for="loginPassword">Password</label>
+          <div class="pw-row">
+            <input id="loginPassword" type="password" placeholder="••••••••" autocomplete="current-password" required />
+            <button type="button" class="pw-toggle" data-target="loginPassword">SHOW</button>
+          </div>
+        </div>
+        <button class="primary" id="loginBtn" type="submit">ENTER THE CASE</button>
+        <div class="status" id="loginStatus"></div>
+      </form>
+
+      <!-- SIGNUP FORM -->
+      <form id="signupForm" style="display:none;">
+        <div class="field">
+          <label for="signupEmail">Email Address</label>
+          <input id="signupEmail" type="email" placeholder="you@example.com" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label for="signupPassword">Choose a Password</label>
+          <div class="pw-row">
+            <input id="signupPassword" type="password" placeholder="At least 8 characters" autocomplete="new-password" minlength="8" required />
+            <button type="button" class="pw-toggle" data-target="signupPassword">SHOW</button>
+          </div>
+        </div>
+        <button class="primary" id="signupBtn" type="submit">REGISTER</button>
+        <div class="status" id="signupStatus"></div>
+      </form>
+    </div>
+
+    <div class="footnote">3 failed attempts triggers a cooldown · All access is logged</div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="supabase-client.js"></script>
+<script src="auth.js"></script>
+</body>
+</html>
