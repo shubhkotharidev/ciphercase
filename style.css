@@ -26,9 +26,6 @@ html, body {
 body {
   position: relative;
   overflow-x: hidden;
-  background-image:
-    radial-gradient(circle at 20% 15%, rgba(179, 24, 43, 0.10), transparent 40%),
-    radial-gradient(circle at 85% 80%, rgba(179, 24, 43, 0.08), transparent 45%);
 }
 
 /* halftone grain overlay, echoes the poster's stipple texture */
@@ -76,17 +73,15 @@ a { color: var(--blood-bright); }
   text-transform: uppercase;
 }
 
-.masthead h1 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(40px, 8vw, 72px);
-  letter-spacing: 0.06em;
-  margin: 6px 0 0;
-  color: var(--ink);
-  text-shadow: 0 0 18px rgba(230, 41, 63, 0.35);
+.masthead-logo {
+  max-width: 100%;
+  height: auto;
+  margin-top: 12px;
 }
 
-.masthead h1 span {
-  color: var(--blood-bright);
+.topbar-logo {
+  height: 44px;
+  width: auto;
 }
 
 .masthead .tagline {
@@ -327,13 +322,6 @@ button.primary:disabled { opacity: 0.4; cursor: not-allowed; }
   border-bottom: 1px solid var(--line);
 }
 
-.topbar .brand {
-  font-family: 'Bebas Neue', sans-serif;
-  letter-spacing: 0.08em;
-  font-size: 18px;
-}
-.topbar .brand span { color: var(--blood-bright); }
-
 .topbar .user-email {
   font-size: 11.5px;
   color: var(--ink-dim);
@@ -395,4 +383,94 @@ button.primary:disabled { opacity: 0.4; cursor: not-allowed; }
 
 @media (max-width: 480px) {
   .file { padding: 24px 18px 22px; }
+}
+
+/* ---- Mini Dyson Sphere / Atom Logo ---- */
+.dyson-wrapper {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none; /* Allows clicks to pass through if it overlaps anything */
+  z-index: 20;
+}
+
+.dyson-logo {
+  width: 40px; /* Scale logo as needed */
+  height: auto;
+  position: relative;
+  z-index: 10;
+}
+
+.dyson-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  transform-origin: center;
+  border: 1px solid rgba(185, 173, 160, 0.15); /* Subtle ink color */
+}
+
+/* Elliptical ring 1 */
+.ring-1 {
+  width: 100px;
+  height: 35px;
+  border-left: 1px solid var(--blood-bright);
+  animation: spinRing1 7s linear infinite;
+}
+
+/* Elliptical ring 2 */
+.ring-2 {
+  width: 100px;
+  height: 35px;
+  border-right: 1px solid var(--ink-dim); 
+  animation: spinRing2 11s linear infinite;
+}
+
+/* Circular dashed orbit */
+.ring-3 {
+  width: 90px;
+  height: 90px;
+  border: 1px dashed rgba(230, 41, 63, 0.25);
+  animation: spinRing3 18s linear infinite;
+}
+
+@keyframes spinRing1 {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes spinRing2 {
+  0% { transform: translate(-50%, -50%) rotate(60deg); }
+  100% { transform: translate(-50%, -50%) rotate(420deg); }
+}
+
+@keyframes spinRing3 {
+  0% { transform: translate(-50%, -50%) rotate(-45deg); }
+  100% { transform: translate(-50%, -50%) rotate(-405deg); } /* Reverse spin */
+}
+
+/* Responsive adjustment for mobile devices */
+@media (max-width: 768px) {
+  .dyson-wrapper {
+    top: 15px;
+    right: 15px;
+    transform: scale(0.65);
+  }
+}
+/* Specific positioning for the Case View */
+.dyson-case-view {
+  position: fixed;
+  top: auto;
+  bottom: 30px;
+}
+
+@media (max-width: 768px) {
+  .dyson-case-view {
+    bottom: 15px; /* Tighter margin for mobile */
+  }
 }
