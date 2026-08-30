@@ -9,8 +9,15 @@
 <body>
 <div class="scanline-band"></div>
 
+<div class="dyson-wrapper dyson-case-view">
+<img src="logo1.png" alt="CYSCOM" class="dyson-logo" />
+  <div class="dyson-ring ring-1"></div>
+  <div class="dyson-ring ring-2"></div>
+  <div class="dyson-ring ring-3"></div>
+</div>
+
 <div class="topbar">
-  <div class="brand">CIPHER <span>CASE</span></div>
+  <img src="head.png" alt="Cipher Case" class="topbar-logo" />
   <div style="display:flex; align-items:center; gap:14px;">
     <span class="user-email" id="userEmail"></span>
     <button class="logout-btn" id="logoutBtn">LOG OUT</button>
@@ -22,8 +29,7 @@
     <div class="status show">Loading your case file…</div>
   </div>
 
-  <!-- Shown once the user has already submitted -->
-  <div class="file file-wide" id="closedPanel" style="display:none;">
+    <div class="file file-wide" id="closedPanel" style="display:none;">
     <div class="closed-stamp">CASE CLOSED</div>
     <div class="section-sub">Your answer has already been filed. Only one submission is allowed per agent.</div>
     <div class="readonly-block">
@@ -35,8 +41,7 @@
     </div>
   </div>
 
-  <!-- Main form -->
-  <form class="file file-wide" id="caseForm" style="display:none;">
+    <form class="file file-wide" id="caseForm" style="display:none;">
     <h2 class="section-title">Suspect Lineup</h2>
     <div class="section-sub">Who is the killer? Select one suspect.</div>
     <div class="lineup" id="lineup"></div>
