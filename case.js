@@ -1,7 +1,6 @@
 let currentUser = null;
 let selectedSuspect = null;
 let selectedRating = 0;
-
 const loadingPanel = document.getElementById("loadingPanel");
 const closedPanel = document.getElementById("closedPanel");
 const caseForm = document.getElementById("caseForm");
@@ -10,21 +9,16 @@ const starsEl = document.getElementById("stars");
 const ratingLabel = document.getElementById("ratingLabel");
 const formStatus = document.getElementById("formStatus");
 const submitBtn = document.getElementById("submitBtn");
-
 const RATING_WORDS = { 1: "Poor", 2: "Fair", 3: "Good", 4: "Great", 5: "Outstanding" };
-
 function setStatus(el, message, kind) {
   el.textContent = message;
   el.className = "status show" + (kind ? " " + kind : "");
 }
-
 function escapeHtml(str) {
   const div = document.createElement("div");
   div.textContent = str;
   return div.innerHTML;
 }
-
-// ---- build the suspect lineup from config.js ----
 function renderLineup() {
   lineupEl.innerHTML = "";
   (window.SUSPECTS || []).forEach((name, i) => {
@@ -40,8 +34,6 @@ function renderLineup() {
     lineupEl.appendChild(card);
   });
 }
-
-// ---- stars ----
 starsEl.querySelectorAll(".star").forEach((star) => {
   star.addEventListener("click", () => {
     selectedRating = parseInt(star.dataset.value, 10);
@@ -58,8 +50,6 @@ function paintStars(hoverValue) {
     s.classList.toggle("filled", parseInt(s.dataset.value, 10) <= value);
   });
 }
-
-// ---- auth guard + load state ----
 (async () => {
   const { data: sessionData } = await supabaseClient.auth.getSession();
   if (!sessionData.session) {
@@ -74,9 +64,7 @@ function paintStars(hoverValue) {
     .select("suspect, reasoning, rating")
     .eq("user_id", currentUser.id)
     .maybeSingle();
-
   loadingPanel.style.display = "none";
-
   if (existing) {
     document.getElementById("closedSuspect").textContent = existing.suspect;
     document.getElementById("closedReasoning").textContent = existing.reasoning;
@@ -87,13 +75,10 @@ function paintStars(hoverValue) {
     caseForm.style.display = "block";
   }
 })();
-
 document.getElementById("logoutBtn").addEventListener("click", async () => {
   await supabaseClient.auth.signOut();
   window.location.href = "index.html";
 });
-
-// ---- submit ----
 caseForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -110,7 +95,6 @@ caseForm.addEventListener("submit", async (e) => {
     setStatus(formStatus, "Rate your experience before submitting.", "warn");
     return;
   }
-
   submitBtn.disabled = true;
   setStatus(formStatus, "Filing your case…", "");
 
@@ -120,10 +104,8 @@ caseForm.addEventListener("submit", async (e) => {
     reasoning,
     rating: selectedRating,
   });
-
   if (error) {
     submitBtn.disabled = false;
-    // Unique violation on user_id = they already submitted (e.g. in another tab)
     if (error.code === "23505") {
       setStatus(formStatus, "You've already filed an answer for this case.", "warn");
     } else {
