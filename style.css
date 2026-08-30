@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Courier+Prime:wght@400;700&family=Special+Elite&display=swap');
-
 :root {
   --void: #050505;
   --black: #0c0b0b;
@@ -12,9 +11,7 @@
   --line: #3a1418;
   --focus: #e6293f;
 }
-
 * { box-sizing: border-box; }
-
 html, body {
   margin: 0;
   min-height: 100%;
@@ -22,13 +19,10 @@ html, body {
   color: var(--ink);
   font-family: 'Courier Prime', 'Special Elite', monospace;
 }
-
 body {
   position: relative;
   overflow-x: hidden;
 }
-
-/* halftone grain overlay, echoes the poster's stipple texture */
 body::before {
   content: "";
   position: fixed;
@@ -40,9 +34,7 @@ body::before {
   background-size: 3px 3px;
   mix-blend-mode: overlay;
 }
-
 a { color: var(--blood-bright); }
-
 .scanline-band {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -51,7 +43,6 @@ a { color: var(--blood-bright); }
   opacity: 0.5;
   z-index: 5;
 }
-
 .wrap {
   min-height: 100vh;
   display: flex;
@@ -59,12 +50,10 @@ a { color: var(--blood-bright); }
   justify-content: center;
   padding: 32px 16px;
 }
-
 .masthead {
   text-align: center;
   margin-bottom: 28px;
 }
-
 .masthead .eyebrow {
   font-family: 'Courier Prime', monospace;
   letter-spacing: 0.35em;
@@ -72,26 +61,21 @@ a { color: var(--blood-bright); }
   color: var(--blood-bright);
   text-transform: uppercase;
 }
-
 .masthead-logo {
   max-width: 100%;
   height: auto;
   margin-top: 12px;
 }
-
 .topbar-logo {
   height: 44px;
   width: auto;
 }
-
 .masthead .tagline {
   margin-top: 6px;
   font-size: 13px;
   color: var(--ink-dim);
   font-style: italic;
 }
-
-/* ---- case file panel ---- */
 .file {
   width: 100%;
   max-width: 440px;
@@ -102,9 +86,7 @@ a { color: var(--blood-bright); }
   padding: 30px 28px 26px;
   position: relative;
 }
-
 .file-wide { max-width: 640px; }
-
 .file::after {
   content: "CLASSIFIED";
   position: absolute;
@@ -118,13 +100,11 @@ a { color: var(--blood-bright); }
   padding: 1px 34px;
   opacity: 0.6;
 }
-
 .file-tabs {
   display: flex;
   gap: 4px;
   margin-bottom: 22px;
 }
-
 .tab-btn {
   flex: 1;
   background: transparent;
@@ -137,7 +117,6 @@ a { color: var(--blood-bright); }
   cursor: pointer;
   transition: all 0.15s ease;
 }
-
 .tab-btn:hover { color: var(--ink); }
 
 .tab-btn.active {
@@ -145,9 +124,7 @@ a { color: var(--blood-bright); }
   border-color: var(--blood);
   color: var(--void);
 }
-
 .field { margin-bottom: 16px; }
-
 .field label {
   display: block;
   font-size: 11px;
@@ -156,7 +133,6 @@ a { color: var(--blood-bright); }
   color: var(--ink-dim);
   margin-bottom: 6px;
 }
-
 .field input, .field textarea {
   width: 100%;
   background: var(--void);
@@ -168,12 +144,10 @@ a { color: var(--blood-bright); }
   outline: none;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
-
 .field input:focus, .field textarea:focus {
   border-color: var(--focus);
   box-shadow: 0 0 0 3px rgba(230, 41, 63, 0.18);
 }
-
 .pw-row { position: relative; }
 .pw-row input { padding-right: 42px; }
 .pw-toggle {
@@ -189,14 +163,12 @@ a { color: var(--blood-bright); }
   letter-spacing: 0.05em;
 }
 .pw-toggle:hover { color: var(--blood-bright); }
-
 .hint {
   font-size: 11.5px;
   color: var(--ink-dim);
   margin-top: 6px;
   line-height: 1.4;
 }
-
 button.primary {
   width: 100%;
   background: var(--blood);
@@ -213,7 +185,6 @@ button.primary {
 button.primary:hover:not(:disabled) { background: var(--blood-bright); border-color: var(--blood-bright); }
 button.primary:active:not(:disabled) { transform: translateY(1px); }
 button.primary:disabled { opacity: 0.4; cursor: not-allowed; }
-
 .status {
   margin-top: 16px;
   padding: 11px 13px;
@@ -226,7 +197,6 @@ button.primary:disabled { opacity: 0.4; cursor: not-allowed; }
 .status.show { display: block; }
 .status.ok { border-left-color: #6fbf73; background: rgba(111,191,115,0.08); }
 .status.warn { border-left-color: #e0a84a; background: rgba(224,168,74,0.08); }
-
 .footnote {
   text-align: center;
   margin-top: 18px;
@@ -234,15 +204,12 @@ button.primary:disabled { opacity: 0.4; cursor: not-allowed; }
   color: var(--ink-dim);
   letter-spacing: 0.05em;
 }
-
-/* ---- suspect lineup ---- */
 .lineup {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   gap: 10px;
   margin-bottom: 6px;
 }
-
 .suspect-card {
   border: 1px solid var(--line);
   background: var(--void);
@@ -256,7 +223,6 @@ button.primary:disabled { opacity: 0.4; cursor: not-allowed; }
   transition: all 0.15s ease;
   position: relative;
 }
-
 .suspect-card .tag {
   display: block;
   font-family: 'Courier Prime', monospace;
@@ -265,16 +231,13 @@ button.primary:disabled { opacity: 0.4; cursor: not-allowed; }
   color: var(--blood-dim);
   margin-bottom: 6px;
 }
-
 .suspect-card:hover { border-color: var(--blood-dim); color: var(--ink); }
-
 .suspect-card.selected {
   border-color: var(--blood-bright);
   color: var(--ink);
   box-shadow: 0 0 0 1px var(--blood-bright), 0 0 16px rgba(230,41,63,0.35);
   background: rgba(179,24,43,0.12);
 }
-
 .suspect-card.selected::before {
   content: "✕";
   position: absolute;
@@ -282,33 +245,26 @@ button.primary:disabled { opacity: 0.4; cursor: not-allowed; }
   color: var(--blood-bright);
   font-size: 11px;
 }
-
-/* ---- stars ---- */
 .stars {
   display: flex;
   gap: 6px;
   font-size: 30px;
   line-height: 1;
 }
-
 .star {
   cursor: pointer;
   color: #3a1418;
   transition: color 0.1s ease, transform 0.1s ease;
   user-select: none;
 }
-
 .star.filled { color: var(--blood-bright); }
 .star:hover { transform: scale(1.12); }
-
 .rating-label {
   font-size: 11px;
   color: var(--ink-dim);
   margin-top: 6px;
   letter-spacing: 0.05em;
 }
-
-/* ---- header bar on case page ---- */
 .topbar {
   position: sticky;
   top: 0;
@@ -321,12 +277,10 @@ button.primary:disabled { opacity: 0.4; cursor: not-allowed; }
   backdrop-filter: blur(6px);
   border-bottom: 1px solid var(--line);
 }
-
 .topbar .user-email {
   font-size: 11.5px;
   color: var(--ink-dim);
 }
-
 .logout-btn {
   background: transparent;
   border: 1px solid var(--line);
@@ -338,7 +292,6 @@ button.primary:disabled { opacity: 0.4; cursor: not-allowed; }
   cursor: pointer;
 }
 .logout-btn:hover { border-color: var(--blood); color: var(--blood-bright); }
-
 .section-title {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 24px;
@@ -346,19 +299,16 @@ button.primary:disabled { opacity: 0.4; cursor: not-allowed; }
   margin: 0 0 4px;
   color: var(--ink);
 }
-
 .section-sub {
   font-size: 12.5px;
   color: var(--ink-dim);
   margin-bottom: 16px;
 }
-
 .divider {
   border: none;
   border-top: 1px dashed var(--line);
   margin: 24px 0;
 }
-
 .closed-stamp {
   display: inline-block;
   font-family: 'Bebas Neue', sans-serif;
@@ -370,7 +320,6 @@ button.primary:disabled { opacity: 0.4; cursor: not-allowed; }
   transform: rotate(-4deg);
   margin-bottom: 18px;
 }
-
 .readonly-block {
   border: 1px solid var(--line);
   background: var(--void);
@@ -380,12 +329,9 @@ button.primary:disabled { opacity: 0.4; cursor: not-allowed; }
   line-height: 1.6;
 }
 .readonly-block b { color: var(--ink); }
-
 @media (max-width: 480px) {
   .file { padding: 24px 18px 22px; }
 }
-
-/* ---- Mini Dyson Sphere / Atom Logo ---- */
 .dyson-wrapper {
   position: fixed;
   top: 30px;
@@ -395,66 +341,53 @@ button.primary:disabled { opacity: 0.4; cursor: not-allowed; }
   display: flex;
   align-items: center;
   justify-content: center;
-  pointer-events: none; /* Allows clicks to pass through if it overlaps anything */
+  pointer-events: none; 
   z-index: 20;
 }
-
 .dyson-logo {
-  width: 40px; /* Scale logo as needed */
+  width: 40px; 
   height: auto;
   position: relative;
   z-index: 10;
 }
-
 .dyson-ring {
   position: absolute;
   top: 50%;
   left: 50%;
   border-radius: 50%;
   transform-origin: center;
-  border: 1px solid rgba(185, 173, 160, 0.15); /* Subtle ink color */
+  border: 1px solid rgba(185, 173, 160, 0.15); 
 }
-
-/* Elliptical ring 1 */
 .ring-1 {
   width: 100px;
   height: 35px;
   border-left: 1px solid var(--blood-bright);
   animation: spinRing1 7s linear infinite;
 }
-
-/* Elliptical ring 2 */
 .ring-2 {
   width: 100px;
   height: 35px;
   border-right: 1px solid var(--ink-dim); 
   animation: spinRing2 11s linear infinite;
 }
-
-/* Circular dashed orbit */
 .ring-3 {
   width: 90px;
   height: 90px;
   border: 1px dashed rgba(230, 41, 63, 0.25);
   animation: spinRing3 18s linear infinite;
 }
-
 @keyframes spinRing1 {
   0% { transform: translate(-50%, -50%) rotate(0deg); }
   100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
-
 @keyframes spinRing2 {
   0% { transform: translate(-50%, -50%) rotate(60deg); }
   100% { transform: translate(-50%, -50%) rotate(420deg); }
 }
-
 @keyframes spinRing3 {
   0% { transform: translate(-50%, -50%) rotate(-45deg); }
   100% { transform: translate(-50%, -50%) rotate(-405deg); } /* Reverse spin */
 }
-
-/* Responsive adjustment for mobile devices */
 @media (max-width: 768px) {
   .dyson-wrapper {
     top: 15px;
@@ -462,7 +395,6 @@ button.primary:disabled { opacity: 0.4; cursor: not-allowed; }
     transform: scale(0.65);
   }
 }
-/* Specific positioning for the Case View */
 .dyson-case-view {
   position: fixed;
   top: auto;
@@ -471,6 +403,6 @@ button.primary:disabled { opacity: 0.4; cursor: not-allowed; }
 
 @media (max-width: 768px) {
   .dyson-case-view {
-    bottom: 15px; /* Tighter margin for mobile */
+    bottom: 15px; 
   }
 }
